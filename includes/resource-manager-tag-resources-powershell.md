@@ -25,7 +25,7 @@ Every time you apply tags to a resource or resource group, you overwrite the exi
   ```powershell
   $tags = (Get-AzureRmResourceGroup -Name TagTestGroup).Tags
   $tags += @{Status="Approved"}
-  Set-AzureRmResourceGroup -Tag $tags -Name TagTestGroup
+  Set-AzureRmResourceGroup -Tag @tags -Name TagTestGroup
   ```
 
 * resource without existing tags.
@@ -39,7 +39,7 @@ Every time you apply tags to a resource or resource group, you overwrite the exi
   ```powershell
   $tags = (Get-AzureRmResource -ResourceName storageexample -ResourceGroupName TagTestGroup).Tags
   $tags += @{Status="Approved"}
-  Set-AzureRmResource -Tag $tags -ResourceName storageexample -ResourceGroupName TagTestGroup -ResourceType Microsoft.Storage/storageAccounts
+  Set-AzureRmResource -Tag @tags -ResourceName storageexample -ResourceGroupName TagTestGroup -ResourceType Microsoft.Storage/storageAccounts
   ```
 
 To apply all tags from a resource group to its resources, and **not retain existing tags on the resources**, use the following script:
